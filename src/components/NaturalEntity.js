@@ -4,11 +4,11 @@ import Thumbnail from './Thumbnail'
 import Description from './Description'
 import Modal from 'react-modal'
 import FullsizeImage from './FullsizeImage'
-import AnimalDetails from './AnimalDetails'
+import NaturalEntityDetails from './NaturalEntityDetails'
 
 Modal.setAppElement(document.getElementById('root'))
 
-const AnimalContainer = styled.li`
+const EntityContainer = styled.li`
   list-style: none;
   flex: 2 20em;
   padding: 1em;
@@ -16,7 +16,7 @@ const AnimalContainer = styled.li`
   border: 0.2em solid burlywood;
 `
 
-export default class Animal extends Component {
+export default class NaturalEntity extends Component {
   constructor() {
     super()
 
@@ -40,7 +40,7 @@ export default class Animal extends Component {
     }
 
     return (
-      <AnimalContainer onClick={this.toggleModal}>
+      <EntityContainer onClick={this.toggleModal}>
         <Thumbnail title={this.props.Title} src={this.props.ImageURLs.Thumb}/>
         <h2>{this.props.Title}</h2>
         <Description content={this.props.Description}/>
@@ -50,9 +50,9 @@ export default class Animal extends Component {
           contentLabel={this.props.Title}>
           <button onClick={this.toggleModal}>X</button>
           <FullsizeImage title={this.props.Title} src={this.props.ImageURLs.FullSize}/>
-          <AnimalDetails {...this.props}/>
+          <NaturalEntityDetails {...this.props}/>
         </Modal>
-      </AnimalContainer>
+      </EntityContainer>
     )
   }
 }
