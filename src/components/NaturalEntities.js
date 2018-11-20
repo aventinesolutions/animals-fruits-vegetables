@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import Animal from './Animal'
+import NaturalEntity from './NaturalEntity'
 
-const EntityContainer = styled.ul`
+const EntitiesContainer = styled.ul`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -35,14 +35,14 @@ export default class NaturalEntities extends Component {
     if (this.state && this.state.entities.length > 0) {
       const list = this.state.entities.sort((a, b) => a.Title.localeCompare(b.Title)).map((entity) => {
         console.log(entity)
-        return <Animal key={entity.Id.toString()} {...entity}/>
+        return <NaturalEntity key={entity.Id.toString()} {...entity}/>
       })
       return (
         <div>
           <h1>Some Animals</h1>
-          <EntityContainer>
+          <EntitiesContainer>
             {list}
-          </EntityContainer>
+          </EntitiesContainer>
         </div>
       )
     }
