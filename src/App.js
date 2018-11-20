@@ -1,14 +1,14 @@
-// Part 1
+// Part 2
 
 import React, { Component } from 'react'
 import './App.css'
-import Animals from './components/Animals'
+import NaturalEntities from './components/NaturalEntities'
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Animals/>
+        <NaturalEntities/>
       </div>
     )
   }
