@@ -29,12 +29,20 @@ export default class Animal extends Component {
   }
 
   render() {
+    const modalStyles = {
+      content: {
+        height: `${this.props.Height}px`,
+        width: `${this.props.Width}px`
+      }
+    }
+
     return (
       <AnimalContainer onClick={this.toggleModal}>
         <Thumbnail title={this.props.Title} src={this.props.ImageURLs.Thumb}/>
         <h2>{this.props.Title}</h2>
         <Description content={this.props.Description}/>
         <Modal
+          style={modalStyles}
           isOpen={this.state.modalIsOpen}
           contentLabel={this.props.Title}>
           <button onClick={this.toggleModal}>X</button>
