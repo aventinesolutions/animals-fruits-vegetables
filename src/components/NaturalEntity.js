@@ -4,7 +4,7 @@ import Thumbnail from './Thumbnail'
 import Description from './Description'
 import Modal from 'react-modal'
 import FullsizeImage from './FullsizeImage'
-import AnimalDetails from './AnimalDetails'
+import NaturalEntityDetails from './NaturalEntityDetails'
 
 Modal.setAppElement(document.getElementById('root'))
 
@@ -50,7 +50,7 @@ export default class NaturalEntity extends Component {
           contentLabel={this.props.Title}>
           <button onClick={this.toggleModal}>X</button>
           <FullsizeImage title={this.props.Title} src={this.props.ImageURLs.FullSize}/>
-          <AnimalDetails {...this.props}/>
+          <NaturalEntityDetails {...this.props}/>
         </Modal>
       </EntityContainer>
     )

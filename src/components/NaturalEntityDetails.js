@@ -7,7 +7,7 @@ const DetailList = styled.ul`
 const Detail = styled.span`
   font-style: italic;
 `
-export default class AnimalDetails extends PureComponent {
+export default class NaturalEntityDetails extends PureComponent {
   render() {
     const { Title, CollectiveNoun, Family } = this.props
     return (
