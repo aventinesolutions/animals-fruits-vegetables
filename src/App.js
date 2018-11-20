@@ -1,3 +1,5 @@
+// Part 1
+
 import React, { Component } from 'react'
 import './App.css'
 import Animals from './components/Animals'
