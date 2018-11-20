@@ -1,5 +1,10 @@
 import React, { Component } from 'react'
+import styled from 'styled-components';
 import Animal from './Animal'
+
+const AnimalContainer = styled.ul`
+  display: flex;
+`
 
 export default class Animals extends Component {
   componentDidMount() {
@@ -30,9 +35,9 @@ export default class Animals extends Component {
       return (
         <div>
           <h1>Some Animals</h1>
-          <ul>
+          <AnimalContainer>
             {list}
-          </ul>
+          </AnimalContainer>
         </div>
       )
     }
