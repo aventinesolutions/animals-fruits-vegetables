@@ -9,17 +9,17 @@ const AnimalContainer = styled.ul`
 `
 
 export default class Animals extends Component {
+  static get source() {
+    return 'http://styleguide.effectivedigital.com/interview/api/animals'
+  }
+
   componentDidMount() {
     this.fetchAnimals()
   }
 
-  get source() {
-    return 'http://styleguide.effectivedigital.com/interview/api/animals'
-  }
-
   fetchAnimals() {
     this.setState({animals: []});
-    return fetch(this.source).then(response => response.json()).then(payload => this.resolve(payload))
+    return fetch(Animals.source).then(response => response.json()).then(payload => this.resolve(payload))
   }
 
   resolve(payload) {
@@ -28,7 +28,7 @@ export default class Animals extends Component {
 
   render() {
     if (this.state && this.state.animals.length > 0) {
-      const list = this.state.animals.map((animal) => {
+      const list = this.state.animals.sort((a, b) => a.Title.localeCompare(b.Title)).map((animal) => {
         console.log(animal);
         return <Animal key={animal.Id.toString()} {...animal}/>
       })
