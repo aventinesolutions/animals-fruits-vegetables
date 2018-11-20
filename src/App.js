@@ -1,4 +1,4 @@
-// Part 1
+// Part 2
 
 import React, { Component } from 'react'
 import './App.css'
