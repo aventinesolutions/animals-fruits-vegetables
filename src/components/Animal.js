@@ -30,9 +30,12 @@ export default class Animal extends Component {
 
   render() {
     const modalStyles = {
+      overlay: {
+        backgroundColor: 'papayawhip'
+      },
       content: {
-        height: `${this.props.Height}px`,
-        width: `${this.props.Width}px`
+        height: `${this.props.Height + 400}px`,
+        width: `${this.props.Width}px`,
       }
     }
 
