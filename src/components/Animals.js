@@ -4,6 +4,8 @@ import Animal from './Animal'
 
 const AnimalContainer = styled.ul`
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 `
 
 export default class Animals extends Component {
@@ -27,10 +29,7 @@ export default class Animals extends Component {
   render() {
     if (this.state && this.state.animals.length > 0) {
       const list = this.state.animals.map((animal) => {
-        console.log(animal);
-        return (
-          <Animal key={animal.Id.toString()} {...animal}/>
-        )
+        return <Animal key={animal.Id.toString()} {...animal}/>
       })
       return (
         <div>
