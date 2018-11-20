@@ -1,7 +1,12 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
+import React, { Component } from 'react'
+import styled from 'styled-components'
 import Thumbnail from './Thumbnail'
 import Description from './Description'
+import Modal from 'react-modal'
+import FullsizeImage from './FullsizeImage'
+import AnimalDetails from './AnimalDetails'
+
+Modal.setAppElement(document.getElementById('root'))
 
 const AnimalContainer = styled.li`
   list-style: none;
@@ -12,13 +17,31 @@ const AnimalContainer = styled.li`
 `
 
 export default class Animal extends Component {
+  constructor() {
+    super()
+
+    this.state = { modalIsOpen: false }
+    this.toggleModal = this.toggleModal.bind(this)
+  }
+
+  toggleModal() {
+    this.setState({ modalIsOpen: !this.state.modalIsOpen })
+  }
+
   render() {
     return (
-      <AnimalContainer>
+      <AnimalContainer onClick={this.toggleModal}>
         <Thumbnail title={this.props.Title} src={this.props.ImageURLs.Thumb}/>
         <h2>{this.props.Title}</h2>
         <Description content={this.props.Description}/>
+        <Modal
+          isOpen={this.state.modalIsOpen}
+          contentLabel={this.props.Title}>
+          <button onClick={this.toggleModal}>X</button>
+          <FullsizeImage title={this.props.Title} src={this.props.ImageURLs.FullSize}/>
+          <AnimalDetails {...this.props}/>
+        </Modal>
       </AnimalContainer>
-    );
+    )
   }
 }
