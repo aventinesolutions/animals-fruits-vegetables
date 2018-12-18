@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import Header from './Header'
 import NaturalEntity from './NaturalEntity'
 
+const NaturalEntityContext = React.createContext()
+
 const EntitiesContainer = styled.ul`
   display: flex;
   flex-wrap: wrap;
