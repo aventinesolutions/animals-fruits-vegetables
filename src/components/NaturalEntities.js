@@ -5,6 +5,18 @@ import NaturalEntity from './NaturalEntity'
 
 const NaturalEntityContext = React.createContext()
 
+class EntityContextProvider extends Component {
+  state = { entityType: 'animals', entities: [] }
+
+  render() {
+    return (
+      <NaturalEntityContext.Provider value='frimmel'>
+        {this.props.children}
+      </NaturalEntityContext.Provider>
+    )
+  }
+}
+
 const EntitiesContainer = styled.ul`
   display: flex;
   flex-wrap: wrap;
@@ -59,7 +71,7 @@ export default class NaturalEntities extends Component {
         return <NaturalEntity key={this.key(entity.Id)} {...entity}/>
       })
       return (
-        <div>
+        <EntityContextProvider>
           <NavContainer>
             <Header entityType={this.state.entityType}/>
             <NavButton onClick={() => this.handleChange('fruitveg')}>show fruits & vegetables</NavButton>
@@ -68,7 +80,7 @@ export default class NaturalEntities extends Component {
           <EntitiesContainer>
             {list}
           </EntitiesContainer>
-        </div>
+        </EntityContextProvider>
       )
     }
     return (
