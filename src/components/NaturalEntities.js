@@ -47,10 +47,14 @@ export default class NaturalEntities extends Component {
     this.setState({ entityType: this.state.entityType, entities: payload })
   }
 
+  key(id) {
+    return `${this.state.entityType}-${id}`
+  }
+
   render() {
     if (this.state && this.state.entities.length > 0) {
       const list = this.state.entities.sort((a, b) => a.Title.localeCompare(b.Title)).map((entity) => {
-        return <NaturalEntity key={entity.Id.toString()} {...entity}/>
+        return <NaturalEntity key={this.key(entity.Id)} {...entity}/>
       })
       return (
         <div>
