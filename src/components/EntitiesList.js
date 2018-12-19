@@ -21,10 +21,10 @@ export default class EntitiesList extends Component {
     return (
       <EntityConsumer>
         {context => {
-          if (context.state.entities.length == 0) {
-            return <Loading entityType={context.state.entityType}/>
+          if (context.state.entities.length > 0) {
+            return <List entityType={context.state.entityType} entities={context.state.entities}/>
           }
-          return <List entityType={context.state.entityType} entities={context.state.entities}/>
+          return <Loading entityType={context.state.entityType}/>
         }}
       </EntityConsumer>
     )
