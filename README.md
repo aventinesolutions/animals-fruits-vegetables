@@ -1,3 +1,21 @@
+## Challenge
+
+1. Make an HTTP GET request to http://styleguide.effectivedigital.com/interview/api/animals (you may use a library to do this if you wish).
+
+2. Format the results into a list. Each item must include a title, description, and a small thumbnail version of the image. The list can be displayed vertically, horizontally, in a grid, however you wish.
+
+3. Create a modal dialog that displays the full sized version of an image and any additional details provided in the JSON (eg. Family, Genus, Collective Noun). The modal should appear after clicking on a thumbnail.
+
+4. Create two navigation items (or buttons) at the top of page - “Animals” and “Fruit & Veg”.
+
+5. Repeat steps 1-3 for the following URL: http://styleguide.effectivedigital.com/interview/api/fruitveg
+
+6. Make the two navigation items in the top bar load the appropriate lists.
+
+7. Optimise your code as much as possible for performance and readability, adding comments where necessary.
+
+----
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
