@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import { EntityProvider } from './EntityContextProvider'
 import Header from './Header'
-import NaturalEntity from './NaturalEntity'
+import EntitiesList from './EntitiesList'
 
 const EntitiesContainer = styled.ul`
   display: flex;
@@ -48,25 +49,18 @@ export default class NaturalEntities extends Component {
   }
 
   render() {
-    if (this.state && this.state.entities.length > 0) {
-      const list = this.state.entities.sort((a, b) => a.Title.localeCompare(b.Title)).map((entity) => {
-        return <NaturalEntity key={entity.Id.toString()} {...entity}/>
-      })
-      return (
-        <div>
-          <NavContainer>
-            <Header entityType={this.state.entityType}/>
-            <NavButton onClick={() => this.handleChange('fruitveg')}>show fruits & vegetables</NavButton>
-            <NavButton onClick={() => this.handleChange('animals')}>show animals</NavButton>
-          </NavContainer>
-          <EntitiesContainer>
-            {list}
-          </EntitiesContainer>
-        </div>
-      )
-    }
     return (
-      <h1>Loading ...</h1>
+      <EntityProvider value={{state: this.state}}>
+        <NavContainer>
+          <Header entityType={this.state.entityType}/>
+          <NavButton onClick={() => this.handleChange('fruitveg')}>show fruits & vegetables</NavButton>
+          <NavButton onClick={() => this.handleChange('animals')}>show animals</NavButton>
+        </NavContainer>
+        <EntitiesContainer>
+          <EntitiesList/>
+        </EntitiesContainer>
+        {this.props.children}
+      </EntityProvider>
     )
   }
 }
