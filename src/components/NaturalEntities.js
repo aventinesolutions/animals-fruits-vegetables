@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { EntityProvider, EntityConsumer } from './EntityContextProvider'
+import { EntityProvider } from './EntityContextProvider'
 import Header from './Header'
-// eslint-disable-next-line
-import NaturalEntity from './NaturalEntity'
+import EntitiesList from './EntitiesList'
 
 const EntitiesContainer = styled.ul`
   display: flex;
@@ -49,14 +48,6 @@ export default class NaturalEntities extends Component {
     this.setState({ entityType: this.state.entityType, entities: payload })
   }
 
-  key(id) {
-    return `${this.state.entityType}-${id}`
-  }
-
-  isEmpty(state) {
-    return state && state.entities.length > 0
-  }
-
   render() {
     return (
       <EntityProvider value={{state: this.state}}>
@@ -66,7 +57,7 @@ export default class NaturalEntities extends Component {
           <NavButton onClick={() => this.handleChange('animals')}>show animals</NavButton>
         </NavContainer>
         <EntitiesContainer>
-          <EntityConsumer>{context => <h2>Loading {context.state.entityType} ...</h2>}</EntityConsumer>
+          <EntitiesList/>
         </EntitiesContainer>
         {this.props.children}
       </EntityProvider>
