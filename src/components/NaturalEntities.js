@@ -66,7 +66,7 @@ export default class NaturalEntities extends Component {
           <NavButton onClick={() => this.handleChange('animals')}>show animals</NavButton>
         </NavContainer>
         <EntitiesContainer>
-          <EntityConsumer>{context => <h2>Loading ...</h2>}</EntityConsumer>
+          <EntityConsumer>{context => <h2>Loading {context.state.entityType} ...</h2>}</EntityConsumer>
         </EntitiesContainer>
         {this.props.children}
       </EntityProvider>
