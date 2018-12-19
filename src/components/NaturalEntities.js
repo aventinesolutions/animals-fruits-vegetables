@@ -1,21 +1,9 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import { EntityProvider, EntityConsumer } from './EntityContextProvider'
 import Header from './Header'
+// eslint-disable-next-line
 import NaturalEntity from './NaturalEntity'
-
-const NaturalEntityContext = React.createContext()
-
-class EntityContextProvider extends Component {
-  state = { entityType: 'animals', entities: [] }
-
-  render() {
-    return (
-      <NaturalEntityContext.Provider value='frimmel'>
-        {this.props.children}
-      </NaturalEntityContext.Provider>
-    )
-  }
-}
 
 const EntitiesContainer = styled.ul`
   display: flex;
@@ -65,26 +53,23 @@ export default class NaturalEntities extends Component {
     return `${this.state.entityType}-${id}`
   }
 
+  isEmpty(state) {
+    return state && state.entities.length > 0
+  }
+
   render() {
-    if (this.state && this.state.entities.length > 0) {
-      const list = this.state.entities.sort((a, b) => a.Title.localeCompare(b.Title)).map((entity) => {
-        return <NaturalEntity key={this.key(entity.Id)} {...entity}/>
-      })
-      return (
-        <EntityContextProvider>
-          <NavContainer>
-            <Header entityType={this.state.entityType}/>
-            <NavButton onClick={() => this.handleChange('fruitveg')}>show fruits & vegetables</NavButton>
-            <NavButton onClick={() => this.handleChange('animals')}>show animals</NavButton>
-          </NavContainer>
-          <EntitiesContainer>
-            {list}
-          </EntitiesContainer>
-        </EntityContextProvider>
-      )
-    }
     return (
-      <h1>Loading ...</h1>
+      <EntityProvider value={{state: this.state}}>
+        <NavContainer>
+          <Header entityType={this.state.entityType}/>
+          <NavButton onClick={() => this.handleChange('fruitveg')}>show fruits & vegetables</NavButton>
+          <NavButton onClick={() => this.handleChange('animals')}>show animals</NavButton>
+        </NavContainer>
+        <EntitiesContainer>
+          <EntityConsumer>{context => <h2>Loading ...</h2>}</EntityConsumer>
+        </EntitiesContainer>
+        {this.props.children}
+      </EntityProvider>
     )
   }
 }
