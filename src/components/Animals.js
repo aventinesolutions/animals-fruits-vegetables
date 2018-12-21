@@ -1,4 +1,4 @@
-import { Component } from 'react'
+import React, { Component } from 'react'
 import NaturalEntities from './NaturalEntities'
 
 export default class Animals extends Component {
