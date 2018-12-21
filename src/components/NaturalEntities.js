@@ -21,9 +21,9 @@ const NavButton = styled.button`
 `
 
 export default class NaturalEntities extends Component {
-  constructor() {
-    super()
-    this.state = { entityType: 'animals', entities: [] }
+  constructor(props) {
+    super(props)
+    this.state = { entityType: this.props.entitytType || 'animals', entities: [] }
     this.handleChange = this.handleChange.bind(this)
   }
 
