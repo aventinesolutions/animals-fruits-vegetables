@@ -6,6 +6,10 @@ const Animals = lazy(() => import('./components/Animals'))
 const FruitsVegetables = lazy(() => import('./components/FruitsVegetables'))
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.props.version = '1.1.0'
+  }
 
   componentDidMount() {
     console.log(Animals, FruitsVegetables)
