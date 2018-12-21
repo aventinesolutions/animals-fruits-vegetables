@@ -1,5 +1,3 @@
-// Part 2
-
 import React, { Component } from 'react'
 import './App.css'
 import NaturalEntities from './components/NaturalEntities'
