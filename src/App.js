@@ -1,27 +1,19 @@
-import React, { Component, lazy } from 'react'
+import React from 'react'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+
 import './App.css'
-import NaturalEntities from './components/NaturalEntities'
 
-const Animals = lazy(() => import('./components/Animals'))
-const FruitsVegetables = lazy(() => import('./components/FruitsVegetables'))
+import Animals from './components/Animals'
+import FruitsVegetables from './components/FruitsVegetables'
 
-class App extends Component {
-  constructor(props) {
-    super(props)
-    this.props.version = '1.1.0'
-  }
-
-  componentDidMount() {
-    console.log(Animals, FruitsVegetables)
-  }
-
-  render() {
-    return (
-      <div className="App">
-        <NaturalEntities/>
-      </div>
-    )
-  }
-}
+const App = () => (
+  <Router>
+    <div>
+      <Route exact path='/' component={Animals}/>
+      <Route path='/fruitsveg' component={FruitsVegetables}/>
+      <Route path='/animals' component={Animals}/>
+    </div>
+  </Router>
+)
 
 export default App
