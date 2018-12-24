@@ -1,17 +1,12 @@
 import React, { PureComponent } from 'react'
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
 import { EntityConsumer } from './EntityContextProvider'
 import Header from './Header'
+import NavButton from './NavButton'
 
 const NavContainer = styled.ul`
   display: flex;
   justify-content: flex-start;
-`
-
-const NavButton = styled.button`
-  height: 50%;
-  align-self: flex-end;
 `
 
 export default class Navigation extends PureComponent {
@@ -24,7 +19,7 @@ export default class Navigation extends PureComponent {
           return (
             <NavContainer>
               <Header entityType={entityType}/>
-              <NavButton><Link to={other}>show fruits & vegetables</Link></NavButton>
+              <NavButton entityType={other}/>
             </NavContainer>
           )
         }}
