@@ -17,8 +17,8 @@ const EntityContainer = styled.li`
 `
 
 export default class NaturalEntity extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
 
     this.state = { modalIsOpen: false }
     this.toggleModal = this.toggleModal.bind(this)

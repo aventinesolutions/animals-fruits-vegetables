@@ -1,30 +1,18 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import { EntityProvider } from './EntityContextProvider'
-import Header from './Header'
 import EntitiesList from './EntitiesList'
+import Navigation from './Navigation'
 
 const EntitiesContainer = styled.ul`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
 `
-
-const NavContainer = styled.ul`
-  display: flex;
-  justify-content: flex-start;
-`
-
-const NavButton = styled.button`
-  height: 50%;
-  align-self: flex-end;
-`
-
 export default class NaturalEntities extends Component {
   constructor(props) {
     super(props)
     this.state = { entityType: this.props.entitytType || 'animals', entities: [] }
-    this.handleChange = this.handleChange.bind(this)
   }
 
   get source() {
@@ -33,11 +21,6 @@ export default class NaturalEntities extends Component {
 
   componentDidMount() {
     this.fetchEntities()
-  }
-
-  handleChange(entityType) {
-    this.setState({ entityType: entityType, entities: [] })
-    this.fetchEntities(entityType)
   }
 
   fetchEntities() {
@@ -51,11 +34,7 @@ export default class NaturalEntities extends Component {
   render() {
     return (
       <EntityProvider value={{state: this.state}}>
-        <NavContainer>
-          <Header entityType={this.state.entityType}/>
-          <NavButton onClick={() => this.handleChange('fruitveg')}>show fruits & vegetables</NavButton>
-          <NavButton onClick={() => this.handleChange('animals')}>show animals</NavButton>
-        </NavContainer>
+        <Navigation currentType={this.state.entityType}/>
         <EntitiesContainer>
           <EntitiesList/>
         </EntitiesContainer>
