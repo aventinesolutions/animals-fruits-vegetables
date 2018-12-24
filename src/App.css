@@ -30,3 +30,18 @@
     transform: rotate(360deg);
   }
 }
+
+button:hover {
+  background-color: burlywood;
+  box-shadow: 0.2em 0.2em grey;
+}
+
+button:hover a {
+  color: grey;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
