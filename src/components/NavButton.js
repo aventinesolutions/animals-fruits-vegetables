@@ -3,13 +3,13 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
 const Button = styled.button`
-  height: 50%;
+  height: 3em;
+  margin: 1em;
+  padding: 0 1em 0 1em;
   align-self: flex-end;
-  
-  a {
-    text-decoration: none;
-    min-width: 30em;
-  }
+  background-color: inherit;
+  border: 0.15em solid burlywood;
+  transition-duration: 0.4s;
 `
 
 export default class NavButton extends PureComponent {
