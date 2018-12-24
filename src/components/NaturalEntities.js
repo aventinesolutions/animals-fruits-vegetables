@@ -12,7 +12,7 @@ const EntitiesContainer = styled.ul`
 export default class NaturalEntities extends Component {
   constructor(props) {
     super(props)
-    this.state = { entityType: this.props.entitytType || 'animals', entities: [] }
+    this.state = { entityType: this.props.entityType || 'animals', entities: [] }
   }
 
   get source() {
@@ -34,7 +34,7 @@ export default class NaturalEntities extends Component {
   render() {
     return (
       <EntityProvider value={{state: this.state}}>
-        <Navigation currentType={this.state.entityType}/>
+        <Navigation/>
         <EntitiesContainer>
           <EntitiesList/>
         </EntitiesContainer>

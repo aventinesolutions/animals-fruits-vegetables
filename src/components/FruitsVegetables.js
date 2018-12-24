@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { Component } from 'react'
 import NaturalEntities from './NaturalEntities'
 
-export default class FruitsVegetables extends NaturalEntities {
-  constructor(props) {
-    super({...props, entityType: 'fruitsveg'})
+export default class FruitsVegetables extends Component {
+  render() {
+    return <NaturalEntities entityType='fruitveg'/>
   }
 }
